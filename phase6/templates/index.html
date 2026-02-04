@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomato AI Recommendation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Zomato AI Restaurant Recommendation</h1>
+        <p class="subtitle">Find the best dining spots in Bangalore using AI</p>
+        
+        <div class="card">
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" placeholder="e.g. Banashankari, Indiranagar">
+            </div>
+            <div class="form-group">
+                <label for="budget">Budget per person (₹)</label>
+                <input type="number" id="budget" placeholder="e.g. 500">
+            </div>
+            <button id="get-recommendation">Get Recommendation</button>
+        </div>
+
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>Zomato AI is analyzing the dataset...</p>
+        </div>
+
+        <div id="result" class="hidden card">
+            <h2>AI Recommendation</h2>
+            <div id="recommendation-text"></div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
