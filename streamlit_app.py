@@ -21,21 +21,55 @@ st.set_page_config(
 # Custom CSS for Zomato styling
 st.markdown("""
     <style>
+    /* Smooth Navigation & Fade-in Effect */
     .main {
-        background-color: #f4f7f6;
+        background: linear-gradient(135deg, #f4f7f6 0%, #e9ecef 100%);
+        animation: fadeIn 1.2s ease-in-out;
     }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
     h1 {
         color: #cb202d;
+        font-weight: 800;
+        letter-spacing: -0.5px;
     }
+
     .stButton>button {
         background-color: #cb202d;
         color: white;
         font-weight: bold;
-        border-radius: 6px;
-        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        padding: 0.6rem 1.2rem;
+        border: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(203, 32, 45, 0.2);
     }
+
     .stButton>button:hover {
         background-color: #a31822;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(203, 32, 45, 0.3);
+    }
+
+    /* Recommendation Box Faded Styling */
+    .recommendation-box {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        padding: 25px;
+        border-radius: 15px;
+        border-left: 6px solid #cb202d;
+        color: #2d3436;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        animation: slideIn 0.6s ease-out;
+    }
+
+    @keyframes slideIn {
+        from { opacity: 0; clip-path: inset(0 0 100% 0); }
+        to { opacity: 1; clip-path: inset(0 0 0 0); }
     }
     </style>
     """, unsafe_allow_html=True)
@@ -89,7 +123,7 @@ if st.button("Get Recommendation", type="primary"):
                 # Display recommendation
                 st.subheader("AI Recommendation")
                 st.markdown(f"""
-                <div style="background-color: #f9f9f9; padding: 20px; border-radius: 10px; border-left: 5px solid #cb202d; color: #333;">
+                <div class="recommendation-box">
                 {recommendation}
                 </div>
                 """, unsafe_allow_html=True)
